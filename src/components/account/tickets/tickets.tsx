@@ -36,7 +36,6 @@ export function Tickets({ page, searchParams }: TicketsProps) {
 		useState<GetUserBookingsResponse | null>(null);
 	const [refundTarget, setRefundTarget] = useState<string | null>(null);
 
-	// --- REAL API DATA (limit set to 5) ---
 	const { data, isLoading } = useGetBookings({ page, limit: 5 });
 	const bookings = data?.items ?? [];
 	const totalPages = data?.pagination?.totalPages ?? 1;

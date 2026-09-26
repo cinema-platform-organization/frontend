@@ -26,10 +26,5 @@ export function formatReleaseDate(dateString: string): string | null {
 }
 
 export function formatOrderTime(timeString: string) {
-	const date = new Date(`1970-01-01T${timeString}Z`);
-	return new Intl.DateTimeFormat("uk-UA", {
-		hour: "2-digit",
-		minute: "2-digit",
-		timeZone: "Europe/Kiev",
-	}).format(date);
+	return timeString.slice(0, 5);
 }
