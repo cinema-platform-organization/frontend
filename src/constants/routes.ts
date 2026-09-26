@@ -14,7 +14,6 @@ export const ROUTES = {
 		ROOT: "/account",
 		TICKETS: "/account/tickets",
 		SETTINGS: "/account/settings",
-		NOTIFICATIONS: "/account/notifications",
 	},
 	ADMIN: {
 		ROOT: "/admin",

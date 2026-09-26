@@ -57,11 +57,6 @@ export default function AccountPage() {
 					href: ROUTES.ACCOUNT.SETTINGS,
 				},
 				{
-					icon: BellIcon,
-					label: "Notifications",
-					href: ROUTES.ACCOUNT.NOTIFICATIONS,
-				},
-				{
 					icon: LogOutIcon,
 					label: "Log out",
 					action: () => setIsLogoutOpen(true),
