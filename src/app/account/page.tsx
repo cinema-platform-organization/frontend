@@ -16,6 +16,7 @@ import { useGetMe, useLogout } from "@/api/hooks";
 import { AlertDialog } from "@/components/ui/alert-dialog";
 import { ROUTES } from "@/constants/routes";
 import { deleteCookie } from "@/lib/cookies";
+import { getMediaSource } from "@/lib/utils";
 
 export default function AccountPage() {
 	const [isLogoutOpen, setIsLogoutOpen] = useState(false);
@@ -76,7 +77,7 @@ export default function AccountPage() {
 				<div className="flex items-center gap-6 rounded-xl bg-[#1A1C24] p-6">
 					{user?.avatar ? (
 						<Image
-							src={user.avatar}
+							src={getMediaSource(user.avatar)}
 							alt={user.name || "name"}
 							width={96}
 							height={96}

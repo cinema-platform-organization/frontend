@@ -6,6 +6,7 @@ import { useRef } from "react";
 
 import type { GetMeResponse } from "@/api/generated";
 import { useChangeAvatar } from "@/api/hooks";
+import { getMediaSource } from "@/lib/utils";
 
 interface AvatarUploaderProps {
 	user: GetMeResponse;
@@ -39,7 +40,7 @@ export function AvatarUploader({ user }: AvatarUploaderProps) {
 			>
 				{user?.avatar ? (
 					<Image
-						src={user.avatar}
+						src={getMediaSource(user.avatar)}
 						alt="Avatar"
 						width={90}
 						height={90}
