@@ -8,12 +8,15 @@ import { getScreeningsByDate } from "@/api/requests";
 import { DateSelector } from "@/components/schedule/date-selector";
 import { ScheduleList } from "@/components/schedule/schedule-list";
 import { toPaginatedResult } from "@/lib/utils/paginated";
+import { parseApiDate, toKyivTime } from "@/lib/utils/to-iso";
 
 const dates = Array.from({ length: 7 }).map((_, i) => addDays(new Date(), i));
 
 function formatScreenings(response: GetScreeningResponse[]) {
 	response.sort(
-		(a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime(),
+		(a, b) =>
+			parseApiDate(a.startAt).getTime() -
+			parseApiDate(b.startAt).getTime(),
 	);
 
 	const theatersMap = response.reduce((acc: any, s) => {
@@ -27,10 +30,9 @@ function formatScreenings(response: GetScreeningResponse[]) {
 		acc[tId].screenings.push({
 			id: s.id,
 			movie: s.movie,
-			time: new Date(s.startAt).toLocaleTimeString("en-GB", {
-				hour: "2-digit",
-				minute: "2-digit",
-			}),
+			// startAt is UTC without a zone marker; show it in Kyiv time
+			// whatever zone the server or browser runs in
+			time: toKyivTime(s.startAt),
 			hall: s.hall.name,
 			format: "2D",
 			price: `${s.seatTypes[0]?.price ?? 0} UAH`,

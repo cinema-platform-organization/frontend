@@ -2,7 +2,7 @@
 // Without the "Z" browsers read them as local time, and Safari can't parse the space.
 const ZONELESS = /^\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(:\d{2}(\.\d+)?)?$/;
 
-function parseApiDate(value: string | Date): Date {
+export function parseApiDate(value: string | Date): Date {
 	if (value instanceof Date) {
 		return value;
 	}

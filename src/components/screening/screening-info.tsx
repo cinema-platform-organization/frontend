@@ -1,27 +1,34 @@
 import { CalendarIcon, ClockIcon, FilmIcon, MapPinIcon } from "lucide-react";
 
 import type { GetScreeningResponse } from "@/api/generated";
+import { parseApiDate } from "@/lib/utils/to-iso";
 
+const KYIV_DATE = new Intl.DateTimeFormat("en-GB", {
+	day: "numeric",
+	month: "long",
+	timeZone: "Europe/Kyiv",
+});
+
+const KYIV_TIME = new Intl.DateTimeFormat("uk-UA", {
+	hour: "2-digit",
+	minute: "2-digit",
+	hourCycle: "h23",
+	timeZone: "Europe/Kyiv",
+});
+
+// startAt/endAt come from the API in UTC without a zone marker;
+// parseApiDate reads them as UTC, the formatters show Kyiv time
 function formatDate(dateString: string) {
-	const date = new Date(dateString);
-	return new Intl.DateTimeFormat("en-GB", {
-		day: "numeric",
-		month: "long",
-	}).format(date);
+	return KYIV_DATE.format(parseApiDate(dateString));
 }
 
 function formatTime(dateString: string) {
-	const date = new Date(dateString);
-	return new Intl.DateTimeFormat("uk-UA", {
-		hour: "2-digit",
-		minute: "2-digit",
-		timeZone: "Europe/Kiev",
-	}).format(date);
+	return KYIV_TIME.format(parseApiDate(dateString));
 }
 
 function getDuration(start: string, end: string) {
-	const startDate = new Date(start);
-	const endDate = new Date(end);
+	const startDate = parseApiDate(start);
+	const endDate = parseApiDate(end);
 	return Math.round((endDate.getTime() - startDate.getTime()) / 60000);
 }
 
