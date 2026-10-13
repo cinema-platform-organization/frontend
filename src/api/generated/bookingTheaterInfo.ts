@@ -7,6 +7,8 @@
  */
 
 export interface BookingTheaterInfo {
+  /** Theater id */
   id: string;
+  /** Theater name */
   name: string;
 }

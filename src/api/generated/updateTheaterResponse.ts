@@ -8,5 +8,6 @@
 import type { GetTheatersResponse } from './getTheatersResponse';
 
 export interface UpdateTheaterResponse {
+  /** The theater after the update */
   theater: GetTheatersResponse;
 }

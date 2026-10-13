@@ -6,6 +6,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Account role. `ADMIN` can use the admin-only endpoints.
+ */
 export type GetMeResponseRole = typeof GetMeResponseRole[keyof typeof GetMeResponseRole];
 
 

@@ -7,6 +7,13 @@
  */
 
 export interface ConfirmEmailChangeRequest {
+  /** The same new email address that was sent to /account/email/init. A different address is rejected with 400 Email mismatch. */
   email: string;
+  /**
+   * 6-digit confirmation code received at the new email address. Valid for 5 minutes and usable once.
+   * @minLength 6
+   * @maxLength 6
+   * @pattern ^\d{6}$
+   */
   code: string;
 }

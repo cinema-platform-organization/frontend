@@ -6,4 +6,9 @@
  * OpenAPI spec version: 1.0
  */
 
-export type GetMovieResponseReleaseDate = { [key: string]: unknown };
+export type SeatControllerListSeatsByHallParams = {
+/**
+ * Screening to check seat availability for
+ */
+screeningId?: string;
+};

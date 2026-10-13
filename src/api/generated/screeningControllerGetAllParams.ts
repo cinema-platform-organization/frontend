@@ -7,8 +7,20 @@
  */
 
 export type ScreeningControllerGetAllParams = {
+/**
+ * Only screenings in this theater's halls. An unknown theater or one without halls returns an empty list.
+ */
 theaterId?: string;
+/**
+ * Only screenings on this day, `YYYY-MM-DD`. The day is counted in **UTC** (00:00–24:00 UTC, i.e. 02:00/03:00 to 02:00/03:00 Kyiv time). With a date, **all** screenings of the day are returned: `limit` and `page` are ignored. Without it, screenings of all days, past ones included, page by page.
+ */
 date?: string;
+/**
+ * Screenings per page (1–100). Ignored when `date` is set.
+ */
 limit?: number;
+/**
+ * Page number, starting at 1. Ignored when `date` is set.
+ */
 page?: number;
 };

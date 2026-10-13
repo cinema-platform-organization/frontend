@@ -11,11 +11,18 @@ import type { ScreeningMovieInfo } from './screeningMovieInfo';
 import type { ScreeningSeatType } from './screeningSeatType';
 
 export interface GetScreeningsResponse {
+  /** Screening id */
   id: string;
+  /** Start time. Format `YYYY-MM-DD HH:mm:ss.SSS` in **UTC**, without the `Z` suffix (append `Z` before parsing, e.g. `new Date(value.replace(" ", "T") + "Z")`). */
   startAt: string;
+  /** End time. Format `YYYY-MM-DD HH:mm:ss.SSS` in **UTC**, without the `Z` suffix (append `Z` before parsing, e.g. `new Date(value.replace(" ", "T") + "Z")`). */
   endAt: string;
+  /** Theater of the hall */
   theater: ScreeningTheaterInfo;
+  /** Hall of the screening */
   hall: ScreeningHallInfo;
+  /** The movie being shown. **Not included** in GET /screenings/movie/{id} (the movie is already known there). */
   movie: ScreeningMovieInfo;
+  /** Distinct seat type + price combinations in the hall, for showing prices. Missing if the hall has no seats. */
   seatTypes: ScreeningSeatType[];
 }

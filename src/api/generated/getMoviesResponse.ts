@@ -7,10 +7,16 @@
  */
 
 export interface GetMoviesResponse {
+  /** Movie id */
   id: string;
+  /** Movie title */
   title: string;
+  /** URL-friendly identifier for GET /movies/{slug}. Missing if the movie has none. */
   slug?: string;
+  /** Path of the poster file in media storage (relative, not a full URL) */
   poster: string;
+  /** Minimum viewer age, 0–21. Missing when it is 0 (no restriction). */
   ratingAge?: number;
+  /** Release date as an ISO 8601 UTC timestamp. Always present in the response: `null` when the movie has no release date. */
   releaseDate?: string;
 }

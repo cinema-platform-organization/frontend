@@ -8,8 +8,12 @@
 import type { SeatDto } from './seatDto';
 
 export interface InitPaymentRequest {
+  /** Screening to book seats for */
   screeningId: string;
+  /** Seats to book, at least one, each seat only once. The total amount is the sum of the seats' current prices. */
   seats: SeatDto[];
+  /** `true` asks LiqPay to save the card for future payments. The card is stored after the payment succeeds. */
   savePaymentMethod?: boolean;
+  /** Not used yet: accepted but ignored. */
   paymentMethodId?: string;
 }

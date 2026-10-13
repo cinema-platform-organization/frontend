@@ -7,6 +7,8 @@
  */
 
 export interface CreateTheaterRequest {
+  /** Theater name, shown to users */
   name: string;
+  /** Street address, shown to users as entered */
   address: string;
 }

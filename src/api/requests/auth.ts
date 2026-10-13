@@ -1,35 +1,34 @@
 import type {
+	AccessTokenResponse,
+	AuthControllerTelegramVerify200,
+	OkResponse,
 	SendOtpRequest,
-	SendOtpResponse,
 	TelegramFinalizeRequest,
-	TelegramFinalizeResponse,
 	TelegramVerifyRequest,
-	TelegramVerifyResponse,
 	VerifyOtpRequest,
-	VerifyOtpResponse,
 } from "../generated";
 import { api } from "../instance";
 
 export async function sendOtpCode(data: SendOtpRequest) {
-	return await api
-		.post<SendOtpResponse>("/auth/otp/send", data)
-		.then(response => {
-			return response.data;
-		});
+	return await api.post<OkResponse>("/auth/otp/send", data).then(response => {
+		return response.data;
+	});
 }
 
 export async function verifyOtpCode(data: VerifyOtpRequest) {
 	return await api
-		.post<VerifyOtpResponse>("/auth/otp/verify", data)
+		.post<AccessTokenResponse>("/auth/otp/verify", data)
 		.then(response => {
 			return response.data;
 		});
 }
 
 export async function refresh() {
-	return await api.post<VerifyOtpResponse>("/auth/refresh").then(response => {
-		return response.data;
-	});
+	return await api
+		.post<AccessTokenResponse>("/auth/refresh")
+		.then(response => {
+			return response.data;
+		});
 }
 
 export async function logout() {
@@ -46,7 +45,7 @@ export async function initTelegram() {
 
 export async function verifyTelegramAuth(data: TelegramVerifyRequest) {
 	return await api
-		.post<TelegramVerifyResponse>("/auth/telegram/verify", data)
+		.post<AuthControllerTelegramVerify200>("/auth/telegram/verify", data)
 		.then(response => {
 			return response.data;
 		});
@@ -54,7 +53,7 @@ export async function verifyTelegramAuth(data: TelegramVerifyRequest) {
 
 export async function finalizeTelegramAuth(data: TelegramFinalizeRequest) {
 	return await api
-		.post<TelegramFinalizeResponse>("/auth/telegram/finalize", data)
+		.post<AccessTokenResponse>("/auth/telegram/finalize", data)
 		.then(response => {
 			return response.data;
 		});

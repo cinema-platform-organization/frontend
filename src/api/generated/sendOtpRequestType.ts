@@ -6,6 +6,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Delivery channel: `email` sends the code by email, `phone` by SMS. Also decides how `identifier` is validated.
+ */
 export type SendOtpRequestType = typeof SendOtpRequestType[keyof typeof SendOtpRequestType];
 
 

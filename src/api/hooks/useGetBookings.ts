@@ -20,7 +20,7 @@ export function useGetBookings(
 ) {
 	return useQuery({
 		queryKey: ["get bookings", params],
-		queryFn: () => getUserBookings(),
+		queryFn: () => getUserBookings(params),
 		select: raw => toPaginatedResult(raw),
 		...options,
 	});

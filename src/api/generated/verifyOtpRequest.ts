@@ -8,7 +8,15 @@
 import type { VerifyOtpRequestType } from './verifyOtpRequestType';
 
 export interface VerifyOtpRequest {
+  /** The same email or phone number the code was sent to with /auth/otp/send. Validated against `type` the same way. */
   identifier: string;
+  /**
+   * 6-digit code from the email or SMS. Valid for 5 minutes and usable once; requesting a new code replaces the previous one.
+   * @minLength 6
+   * @maxLength 6
+   * @pattern ^\d{6}$
+   */
   code: string;
+  /** The same `type` that was used with /auth/otp/send. */
   type: VerifyOtpRequestType;
 }

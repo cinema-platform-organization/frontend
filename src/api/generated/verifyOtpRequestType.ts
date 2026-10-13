@@ -6,6 +6,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * The same `type` that was used with /auth/otp/send.
+ */
 export type VerifyOtpRequestType = typeof VerifyOtpRequestType[keyof typeof VerifyOtpRequestType];
 
 

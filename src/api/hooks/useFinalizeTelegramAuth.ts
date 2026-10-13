@@ -1,15 +1,15 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 import type {
+	AccessTokenResponse,
 	TelegramFinalizeRequest,
-	TelegramFinalizeResponse,
 } from "../generated";
 import { finalizeTelegramAuth } from "../requests/auth";
 
 export function useFinalizeTelegramAuth(
 	options?: Omit<
 		UseMutationOptions<
-			TelegramFinalizeResponse,
+			AccessTokenResponse,
 			unknown,
 			TelegramFinalizeRequest
 		>,

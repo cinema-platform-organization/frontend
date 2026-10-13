@@ -8,9 +8,14 @@
 import type { GetBookingsResponse } from './getBookingsResponse';
 
 export interface PaginatedBookingsResponse {
+  /** Bookings on this page. Empty when the user has none or the page is past the end. */
   data: GetBookingsResponse[];
+  /** Current page, as requested */
   page: number;
+  /** Page size, as requested */
   limit: number;
+  /** Total number of the user's paid bookings across all pages */
   total: number;
+  /** Number of pages: `ceil(total / limit)`. 0 when there are no bookings. */
   totalPages: number;
 }

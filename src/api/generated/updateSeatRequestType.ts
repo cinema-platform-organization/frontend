@@ -6,6 +6,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * New seat type. Leave out to keep the current one.
+ */
 export type UpdateSeatRequestType = typeof UpdateSeatRequestType[keyof typeof UpdateSeatRequestType];
 
 

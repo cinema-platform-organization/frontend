@@ -1,11 +1,11 @@
 import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 
-import type { SendOtpRequest, SendOtpResponse } from "../generated";
+import type { OkResponse, SendOtpRequest } from "../generated";
 import { sendOtpCode } from "../requests";
 
 export function useSendOtpCode(
 	options?: Omit<
-		UseMutationOptions<SendOtpResponse, unknown, SendOtpRequest>,
+		UseMutationOptions<OkResponse, unknown, SendOtpRequest>,
 		"mutationKey" | "mutationFn"
 	>,
 ) {

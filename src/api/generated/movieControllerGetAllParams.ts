@@ -7,8 +7,24 @@
  */
 
 export type MovieControllerGetAllParams = {
+/**
+ * Filter:
+- `now` — already released (release date in the past)
+- `soon` — not released yet, or without a release date
+- `all` or empty — no filter
+- anything else — a category slug; an unknown slug returns an empty list
+ */
 category?: string;
+/**
+ * `true` returns `limit` random movies matching the filter instead of a page. `page` is then ignored and the response always has `page: 1`, `totalPages: 1`.
+ */
 random?: boolean;
+/**
+ * Movies per page (whole number, 1–100)
+ */
 limit?: number;
+/**
+ * Page number, starting at 1. Ignored when `random=true`. A page past the last one returns an empty list.
+ */
 page?: number;
 };

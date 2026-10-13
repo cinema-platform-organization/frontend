@@ -7,6 +7,12 @@
  */
 
 export type BookingControllerGetBookingsParams = {
+/**
+ * How many bookings to return per page (whole number, 1–100).
+ */
 limit?: number;
+/**
+ * Page number, starting at 1 (whole number). A page past the last one returns an empty list.
+ */
 page?: number;
 };

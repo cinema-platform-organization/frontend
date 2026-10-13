@@ -1,11 +1,11 @@
 import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 
-import type { VerifyOtpRequest, VerifyOtpResponse } from "../generated";
+import type { AccessTokenResponse, VerifyOtpRequest } from "../generated";
 import { verifyOtpCode } from "../requests";
 
 export function useVerifyOtpCode(
 	options?: Omit<
-		UseMutationOptions<VerifyOtpResponse, unknown, VerifyOtpRequest>,
+		UseMutationOptions<AccessTokenResponse, unknown, VerifyOtpRequest>,
 		"mutationKey" | "mutationFn"
 	>,
 ) {

@@ -8,5 +8,6 @@
 import type { GetSeatResponse } from './getSeatResponse';
 
 export interface UpdateSeatResponse {
+  /** The seat after the update */
   seat: GetSeatResponse;
 }

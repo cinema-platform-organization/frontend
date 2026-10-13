@@ -8,6 +8,12 @@
 import type { SendOtpRequestType } from './sendOtpRequestType';
 
 export interface SendOtpRequest {
+  /** Where to send the code. Must match `type`:
+- `email` — a valid email address
+- `phone` — 10–15 digits with an optional leading `+`, no spaces or dashes
+
+If no account exists for this identifier yet, one is created. */
   identifier: string;
+  /** Delivery channel: `email` sends the code by email, `phone` by SMS. Also decides how `identifier` is validated. */
   type: SendOtpRequestType;
 }

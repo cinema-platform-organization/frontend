@@ -7,5 +7,8 @@
  */
 
 export type HallControllerGetAllParams = {
-theaterId: string;
+/**
+ * Theater id
+ */
+theaterId?: string;
 };

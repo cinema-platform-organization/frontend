@@ -7,7 +7,10 @@
  */
 
 export interface UpdateCategoryResponse {
+  /** Category id */
   id: string;
+  /** Display name */
   title: string;
+  /** URL-friendly identifier for `GET /movies?category=<slug>`. Missing from the response if the category was created without one. */
   slug?: string;
 }

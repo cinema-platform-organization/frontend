@@ -7,5 +7,6 @@
  */
 
 export interface UpdateHallRequest {
+  /** New hall name. Leave out to keep the current one. The seat layout can't be changed after creation. */
   name?: string;
 }

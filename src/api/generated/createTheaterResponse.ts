@@ -8,5 +8,6 @@
 import type { GetTheatersResponse } from './getTheatersResponse';
 
 export interface CreateTheaterResponse {
+  /** The created theater */
   theater: GetTheatersResponse;
 }

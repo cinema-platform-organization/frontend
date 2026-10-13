@@ -1,17 +1,19 @@
 "use client";
 
-import type { GetAllMoviesResponse } from "@/api/generated";
+import type { GetMovieResponse } from "@/api/generated";
 import { getMediaSource } from "@/lib/utils";
 
 interface MovieBannerProps {
-	movie: GetAllMoviesResponse;
+	movie: GetMovieResponse;
 }
 
 export function MovieBanner({ movie }: MovieBannerProps) {
 	return (
 		<div
 			className="relative h-[320px] w-full overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat"
-			style={{ backgroundImage: `url(${getMediaSource(movie.banner)})` }}
+			style={{
+				backgroundImage: `url(${getMediaSource(movie.banner ?? movie.poster)})`,
+			}}
 		>
 			<div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
 			<div className="relative z-10 flex h-full">

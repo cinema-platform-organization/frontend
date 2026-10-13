@@ -8,5 +8,6 @@
 import type { GetHallResponse } from './getHallResponse';
 
 export interface UpdateHallResponse {
+  /** The hall after the update */
   hall: GetHallResponse;
 }

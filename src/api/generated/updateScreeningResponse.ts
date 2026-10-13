@@ -8,5 +8,6 @@
 import type { GetScreeningResponse } from './getScreeningResponse';
 
 export interface UpdateScreeningResponse {
+  /** The screening after the update, with movie, hall and theater */
   screening: GetScreeningResponse;
 }

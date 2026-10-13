@@ -7,10 +7,16 @@
  */
 
 export interface ScreeningMovieInfo {
+  /** Movie id */
   id: string;
+  /** Movie title */
   title: string;
+  /** Movie slug for GET /movies/{slug}. Missing if the movie has none. */
   slug: string;
+  /** Running time in minutes */
   duration: number;
+  /** Path of the banner file in media storage (relative). Missing if the movie has none. */
   banner: string;
+  /** Path of the poster file in media storage (relative) */
   poster: string;
 }

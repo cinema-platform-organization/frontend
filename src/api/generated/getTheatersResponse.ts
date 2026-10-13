@@ -7,7 +7,10 @@
  */
 
 export interface GetTheatersResponse {
+  /** Theater id */
   id: string;
+  /** Theater name */
   name: string;
+  /** Street address */
   address: string;
 }

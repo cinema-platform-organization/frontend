@@ -7,5 +7,6 @@
  */
 
 export interface TelegramFinalizeRequest {
+  /** The `sessionId` query parameter of the "Return to website" link sent by the Telegram bot after the user shared their phone number (32-character hex string). Valid for 2 minutes and usable once. */
   sessionId: string;
 }

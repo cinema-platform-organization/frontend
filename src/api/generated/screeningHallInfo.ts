@@ -7,6 +7,8 @@
  */
 
 export interface ScreeningHallInfo {
+  /** Hall id */
   id: string;
+  /** Hall name */
   name: string;
 }

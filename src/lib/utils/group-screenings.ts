@@ -1,4 +1,4 @@
-import type { GetScreeningsResponse, ScreeningResponse } from "@/api/generated";
+import type { GetScreeningsResponse } from "@/api/generated";
 
 import { toISO } from "./to-iso";
 

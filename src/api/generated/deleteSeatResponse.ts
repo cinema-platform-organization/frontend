@@ -7,5 +7,6 @@
  */
 
 export interface DeleteSeatResponse {
+  /** Always true on success. Failures are returned as an error response with a 4xx/5xx status, never as `ok: false`. */
   ok: boolean;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { isAxiosError } from "axios";
 import {
 	ArrowLeftIcon,
 	CalendarIcon,
@@ -16,7 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
-import { GetUserBookingsResponse } from "@/api/generated";
+import type { ErrorResponse, GetBookingsResponse } from "@/api/generated";
 import { useGetBookings } from "@/api/hooks";
 import { refundPayment } from "@/api/requests";
 import { AlertDialog } from "@/components/ui/alert-dialog";
@@ -31,10 +32,22 @@ interface TicketsProps {
 	searchParams: Record<string, string | undefined>;
 }
 
+function getRefundErrorMessage(error: unknown) {
+	if (isAxiosError<ErrorResponse>(error) && error.response?.data?.message) {
+		const { message } = error.response.data;
+
+		return Array.isArray(message) ? message.join(", ") : message;
+	}
+
+	return "Could not refund the order. Please try again later.";
+}
+
 export function Tickets({ page, searchParams }: TicketsProps) {
-	const [activeOrder, setActiveOrder] =
-		useState<GetUserBookingsResponse | null>(null);
+	const [activeOrder, setActiveOrder] = useState<GetBookingsResponse | null>(
+		null,
+	);
 	const [refundTarget, setRefundTarget] = useState<string | null>(null);
+	const [refundError, setRefundError] = useState<string | null>(null);
 
 	const { data, isLoading } = useGetBookings({ page, limit: 5 });
 	const bookings = data?.items ?? [];
@@ -45,9 +58,18 @@ export function Tickets({ page, searchParams }: TicketsProps) {
 	const { mutate } = useMutation({
 		mutationKey: ["cancel booking"],
 		mutationFn: refundPayment,
+		onMutate() {
+			setRefundError(null);
+		},
 		onSuccess() {
 			queryClient.invalidateQueries({ queryKey: ["get bookings"] });
 			setRefundTarget(null);
+		},
+		onError(error) {
+			// On 503 the booking is already canceled, so refresh the list either way
+			queryClient.invalidateQueries({ queryKey: ["get bookings"] });
+			setRefundTarget(null);
+			setRefundError(getRefundErrorMessage(error));
 		},
 	});
 
@@ -86,6 +108,19 @@ export function Tickets({ page, searchParams }: TicketsProps) {
 						</button>
 						<h2 className="text-2xl font-semibold">My Orders</h2>
 					</div>
+
+					{refundError && (
+						<div className="flex items-start justify-between gap-3 rounded-xl border border-rose-700/40 bg-rose-700/10 px-4 py-3 text-sm text-rose-200">
+							<span>{refundError}</span>
+							<button
+								onClick={() => setRefundError(null)}
+								className="cursor-pointer text-rose-200 transition hover:text-white"
+								aria-label="Dismiss"
+							>
+								<XIcon className="size-4" />
+							</button>
+						</div>
+					)}
 
 					{isLoading ? (
 						<div className="space-y-6">

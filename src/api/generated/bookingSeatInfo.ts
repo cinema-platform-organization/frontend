@@ -7,7 +7,10 @@
  */
 
 export interface BookingSeatInfo {
+  /** Seat id */
   id: string;
+  /** Row number, starting at 1. 0 if the seat no longer exists in the hall. */
   row: number;
+  /** Seat number within the row, starting at 1. 0 if the seat no longer exists in the hall. */
   number: number;
 }

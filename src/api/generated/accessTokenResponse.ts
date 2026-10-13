@@ -7,5 +7,6 @@
  */
 
 export interface AccessTokenResponse {
+  /** Access token for protected endpoints, sent as `Authorization: Bearer <token>`. Format: `base64url(userId).base64url(issuedAt).base64url(expiresAt).hmacSha256Hex`. When it expires, protected endpoints answer 401 `Expired`; get a new one with POST /auth/refresh. The refresh token is never returned in the body, only as an httpOnly cookie. */
   accessToken: string;
 }

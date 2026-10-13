@@ -8,9 +8,14 @@
 import type { GetMoviesResponse } from './getMoviesResponse';
 
 export interface PaginatedMoviesResponse {
+  /** Movies on this page. Empty when nothing matches or the page is past the end. */
   data: GetMoviesResponse[];
+  /** Current page, as requested. Always 1 when `random=true`. */
   page: number;
+  /** Page size, as requested */
   limit: number;
+  /** Total number of movies matching the filter */
   total: number;
+  /** Number of pages: `ceil(total / limit)`. Always 1 when `random=true`, 0 when nothing matches (without `random`). */
   totalPages: number;
 }

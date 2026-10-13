@@ -7,7 +7,10 @@
  */
 
 export interface BookingMovieInfo {
+  /** Movie id */
   id: string;
+  /** Movie title */
   title: string;
+  /** Path of the poster file in media storage (relative, not a full URL) */
   poster: string;
 }

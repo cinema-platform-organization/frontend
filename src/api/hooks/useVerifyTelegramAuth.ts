@@ -1,15 +1,15 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 import type {
+	AuthControllerTelegramVerify200,
 	TelegramVerifyRequest,
-	TelegramVerifyResponse,
 } from "../generated";
 import { verifyTelegramAuth } from "../requests/auth";
 
 export function useVerifyTelegramAuth(
 	options?: Omit<
 		UseMutationOptions<
-			TelegramVerifyResponse,
+			AuthControllerTelegramVerify200,
 			unknown,
 			TelegramVerifyRequest
 		>,

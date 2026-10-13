@@ -7,16 +7,28 @@
  */
 
 export interface UpdateMovieResponse {
+  /** Movie id */
   id: string;
+  /** Movie title */
   title: string;
+  /** URL-friendly identifier. Missing if the movie has none. */
   slug?: string;
+  /** Plot description */
   description: string;
+  /** Path of the poster file in media storage (relative, not a full URL) */
   poster: string;
+  /** Path of the banner file in media storage (relative). Missing if the movie has none. */
   banner?: string;
+  /** Running time in minutes */
   duration: number;
+  /** Minimum viewer age, 0–21. Missing when it is 0 (no restriction). */
   ratingAge?: number;
+  /** Country of production. Missing if not set. */
   country?: string;
+  /** Release date as an ISO 8601 UTC timestamp. Always present in the response: `null` when the movie has no release date. */
   releaseDate?: string;
+  /** Release year. Missing if not set. */
   releaseYear?: number;
+  /** Category id. Missing if the movie has no category. */
   categoryId?: string;
 }

@@ -7,5 +7,6 @@
  */
 
 export interface InitEmailChangeRequest {
+  /** New email address. A 6-digit confirmation code is sent to it; the account email changes only after the code is confirmed. Must not belong to another account. */
   email: string;
 }

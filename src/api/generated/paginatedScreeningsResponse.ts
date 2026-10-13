@@ -8,9 +8,14 @@
 import type { GetScreeningsResponse } from './getScreeningsResponse';
 
 export interface PaginatedScreeningsResponse {
+  /** Screenings, earliest first. Screenings whose hall, theater or movie can't be loaded are skipped, so this can be shorter than `limit`. */
   data: GetScreeningsResponse[];
+  /** Current page, as requested (meaningless when `date` is set) */
   page: number;
+  /** Page size, as requested (meaningless when `date` is set) */
   limit: number;
+  /** Total number of matching screenings */
   total: number;
+  /** Number of pages: `ceil(total / limit)`. 0 when nothing matches. */
   totalPages: number;
 }

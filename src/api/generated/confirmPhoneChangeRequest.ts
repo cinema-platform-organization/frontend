@@ -7,6 +7,16 @@
  */
 
 export interface ConfirmPhoneChangeRequest {
+  /**
+   * The same new phone number that was sent to /account/phone/init. A different number is rejected with 400 Phone mismatch.
+   * @pattern ^\+?\d{10,15}$
+   */
   phone: string;
+  /**
+   * 6-digit confirmation code received by SMS. Valid for 5 minutes and usable once.
+   * @minLength 6
+   * @maxLength 6
+   * @pattern ^\d{6}$
+   */
   code: string;
 }

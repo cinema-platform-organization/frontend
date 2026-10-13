@@ -6,6 +6,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Seat type
+ */
 export type GetSeatResponseType = typeof GetSeatResponseType[keyof typeof GetSeatResponseType];
 
 

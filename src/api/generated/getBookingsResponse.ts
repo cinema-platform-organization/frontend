@@ -11,12 +11,23 @@ import type { BookingHallInfo } from './bookingHallInfo';
 import type { BookingSeatInfo } from './bookingSeatInfo';
 
 export interface GetBookingsResponse {
+  /** Booking (order) id. The same value is encoded in `qrCode`. */
   id: string;
+  /** Screening date in Kyiv time (Europe/Kyiv), `YYYY-MM-DD` */
   screeningDate: string;
+  /**
+   * Screening start time in Kyiv time (Europe/Kyiv, daylight saving included), `HH:mm`, 24-hour. Display it as is, without converting.
+   * @pattern ^\d{2}:\d{2}$
+   */
   screeningTime: string;
+  /** Movie of the screening. Omitted if the movie was deleted. */
   movie: BookingMovieInfo;
+  /** Theater of the screening. Omitted if the theater was deleted. */
   theater: BookingTheaterInfo;
+  /** Hall of the screening. Omitted if the hall was deleted. */
   hall: BookingHallInfo;
+  /** All seats booked in this order */
   seats: BookingSeatInfo[];
+  /** QR code of the booking id as a PNG data URL, ready for `<img src>`. Generated when the payment is confirmed. */
   qrCode: string;
 }

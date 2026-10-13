@@ -14,14 +14,14 @@ export default function TelegramCallbackPage() {
 
 	const { mutate, isPending, isError } = useVerifyTelegramAuth({
 		onSuccess(data) {
-			if (data.accessToken) {
+			if ("accessToken" in data) {
 				setCookie("accessToken", data.accessToken);
 				router.push(ROUTES.ACCOUNT.ROOT);
 
 				return;
 			}
 
-			if (data.url) {
+			if ("url" in data) {
 				router.push(data.url);
 
 				return;

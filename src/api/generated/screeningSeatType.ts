@@ -7,6 +7,8 @@
  */
 
 export interface ScreeningSeatType {
+  /** Seat type: `standard`, `vip` or `premium` */
   type: string;
+  /** Ticket price for this seat type in UAH */
   price: number;
 }

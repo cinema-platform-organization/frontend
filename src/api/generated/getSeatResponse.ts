@@ -8,10 +8,18 @@
 import type { GetSeatResponseType } from './getSeatResponseType';
 
 export interface GetSeatResponse {
+  /** Seat id */
   id: string;
+  /** Row number, starting at 1 */
   row: number;
+  /** Seat number within the row, starting at 1 from the left */
   number: number;
+  /** Ticket price for this seat in UAH */
   price: number;
+  /** Seat type */
   type: GetSeatResponseType;
+  /** Id of the hall the seat belongs to */
   hallId: string;
+  /** Always `unknown` in GET /seats/{id}: availability depends on a screening, use GET /seats/hall/{hallId}?screeningId= for that. Missing in update responses. */
+  status?: string;
 }

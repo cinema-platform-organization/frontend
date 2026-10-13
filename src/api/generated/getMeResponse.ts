@@ -8,10 +8,16 @@
 import type { GetMeResponseRole } from './getMeResponseRole';
 
 export interface GetMeResponse {
+  /** User id (the same as the account id) */
   id: string;
+  /** Display name. Missing until the user sets one. */
   name?: string;
+  /** Email address. Missing if the user signed up with a phone number or Telegram and never added an email. */
   email: string;
+  /** Phone number. Missing if the user signed up with email and never added a phone. */
   phone: string;
+  /** Path of the avatar file in media storage (relative, not a full URL). Missing until the user uploads one. */
   avatar?: string;
+  /** Account role. `ADMIN` can use the admin-only endpoints. */
   role: GetMeResponseRole;
 }

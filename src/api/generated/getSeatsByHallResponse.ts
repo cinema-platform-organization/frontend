@@ -9,11 +9,22 @@ import type { GetSeatsByHallResponseType } from './getSeatsByHallResponseType';
 import type { GetSeatsByHallResponseStatus } from './getSeatsByHallResponseStatus';
 
 export interface GetSeatsByHallResponse {
+  /** Seat id */
   id: string;
+  /** Row number, starting at 1 */
   row: number;
+  /** Seat number within the row, starting at 1 from the left */
   number: number;
+  /** Ticket price for this seat in UAH */
   price: number;
+  /** Seat type */
   type: GetSeatsByHallResponseType;
+  /** Id of the hall the seat belongs to */
   hallId: string;
+  /** Availability for the screening given in `screeningId`:
+- `reserved` — the seat already has a ticket for this screening
+- `available` — it doesn't
+
+Only present when `screeningId` is sent; without it the field is missing. */
   status: GetSeatsByHallResponseStatus;
 }

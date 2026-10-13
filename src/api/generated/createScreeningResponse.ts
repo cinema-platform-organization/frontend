@@ -7,5 +7,6 @@
  */
 
 export interface CreateScreeningResponse {
+  /** Always true on success. The created screening is not returned; find it with GET /screenings. Failures are returned as an error response. */
   ok: boolean;
 }

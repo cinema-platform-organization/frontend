@@ -7,6 +7,14 @@
  */
 
 export interface CreateCategoryRequest {
+  /**
+   * Display name of the category
+   * @maxLength 255
+   */
   title: string;
+  /**
+   * URL-friendly identifier, used to filter movies with `GET /movies?category=<slug>`. Must be unique across categories. Not generated automatically: without it the category cannot be used in the movie filter. Avoid `now`, `soon` and `all` — the movie filter treats them as special values, not as slugs.
+   * @maxLength 255
+   */
   slug?: string;
 }

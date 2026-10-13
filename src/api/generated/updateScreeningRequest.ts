@@ -7,8 +7,12 @@
  */
 
 export interface UpdateScreeningRequest {
+  /** New movie id. Not checked: a wrong id saves fine, but the screening then fails to load (500). Leave out to keep the current movie. */
   movieId?: string;
+  /** New hall id, must exist. Existing tickets keep the old hall. Leave out to keep the current hall. */
   hallId?: string;
+  /** New start time, ISO 8601 with a time zone offset (without one it is read as UTC). Leave out to keep the current one. */
   startAt?: string;
+  /** New end time, ISO 8601 with a time zone offset. Must stay after the start time. Leave out to keep the current one. */
   endAt?: string;
 }

@@ -6,6 +6,13 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Availability for the screening given in `screeningId`:
+- `reserved` — the seat already has a ticket for this screening
+- `available` — it doesn't
+
+Only present when `screeningId` is sent; without it the field is missing.
+ */
 export type GetSeatsByHallResponseStatus = typeof GetSeatsByHallResponseStatus[keyof typeof GetSeatsByHallResponseStatus];
 
 

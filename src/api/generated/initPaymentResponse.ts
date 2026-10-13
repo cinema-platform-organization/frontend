@@ -7,5 +7,6 @@
  */
 
 export interface InitPaymentResponse {
+  /** LiqPay checkout page. Redirect the user there to pay. After paying, LiqPay sends the user back to /account/tickets on the site; the booking is confirmed when LiqPay notifies the API, which can be a few seconds later. */
   url: string;
 }

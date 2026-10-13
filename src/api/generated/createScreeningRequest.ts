@@ -7,8 +7,12 @@
  */
 
 export interface CreateScreeningRequest {
+  /** Movie id. Not checked on create: a wrong id saves fine, but the screening then fails to load (500) and is skipped in lists. */
   movieId: string;
+  /** Hall id. Must exist. */
   hallId: string;
+  /** Start time, ISO 8601. **Include a time zone offset** (`+02:00`, `+03:00` or `Z`): a time without one is read as UTC, so `16:30` becomes 18:30 or 19:30 in Kyiv. Must not overlap another screening in the same hall. */
   startAt: string;
+  /** End time, ISO 8601 with a time zone offset, like `startAt`. Must be after `startAt`. */
   endAt: string;
 }

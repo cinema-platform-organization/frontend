@@ -7,5 +7,6 @@
  */
 
 export type UsersControllerChangeAvatarBody = {
+  /** Avatar image (JPG, PNG, WEBP or GIF, up to 10 MB). Required. */
   file?: Blob;
 };

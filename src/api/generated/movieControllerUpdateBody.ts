@@ -7,6 +7,42 @@
  */
 
 export type MovieControllerUpdateBody = {
+  /**
+   * Movie title
+   * @maxLength 255
+   */
+  title?: string;
+  /**
+   * URL-friendly identifier used in GET /movies/{slug}. Must be unique.
+   * @maxLength 255
+   */
+  slug?: string;
+  /** Plot description */
+  description?: string;
+  /**
+   * Running time in minutes, at least 1
+   * @minimum 1
+   */
+  duration?: number;
+  /** Release year */
+  releaseYear?: number;
+  /** Release date, ISO 8601. A date without time is stored as midnight UTC. */
+  releaseDate?: string;
+  /**
+   * Minimum viewer age, 0–21 (0 = no restriction)
+   * @minimum 0
+   * @maximum 21
+   */
+  ratingAge?: number;
+  /**
+   * Country of production
+   * @maxLength 255
+   */
+  country?: string;
+  /** Id of an existing category */
+  categoryId?: string;
+  /** New poster image (JPG, PNG, WEBP or GIF, up to 10 MB) */
   poster?: Blob;
+  /** New banner image (JPG, PNG, WEBP or GIF, up to 10 MB) */
   banner?: Blob;
 };

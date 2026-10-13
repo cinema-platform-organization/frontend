@@ -7,5 +7,6 @@
  */
 
 export interface PatchUserRequest {
+  /** New display name. Email and phone are changed through /account, the avatar through PATCH /users/@me/avatar. */
   name: string;
 }

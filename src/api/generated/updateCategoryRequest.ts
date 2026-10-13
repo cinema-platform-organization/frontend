@@ -7,6 +7,14 @@
  */
 
 export interface UpdateCategoryRequest {
+  /**
+   * New display name. Leave out to keep the current one.
+   * @maxLength 255
+   */
   title?: string;
+  /**
+   * New URL-friendly identifier, must be unique across categories. Leave out to keep the current one. Avoid `now`, `soon` and `all` (special values of the movie filter).
+   * @maxLength 255
+   */
   slug?: string;
 }

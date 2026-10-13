@@ -7,6 +7,8 @@
  */
 
 export interface UpdateTheaterRequest {
+  /** New theater name. Leave out to keep the current one. */
   name?: string;
+  /** New street address. Leave out to keep the current one. */
   address?: string;
 }

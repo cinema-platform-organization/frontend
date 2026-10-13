@@ -5,8 +5,13 @@
  * API Gateway for Cinema Platform microservices
  * OpenAPI spec version: 1.0
  */
+import type { RowConfig } from './rowConfig';
 
 export interface CreateHallRequest {
+  /** Hall name, shown to users */
   name: string;
+  /** Id of the theater the hall belongs to */
   theaterId: string;
+  /** Seat layout, one entry per row. All seats are created together with the hall. An empty array creates a hall without seats. */
+  layout: RowConfig[];
 }

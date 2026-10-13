@@ -7,7 +7,10 @@
  */
 
 export interface ScreeningTheaterInfo {
+  /** Theater id */
   id: string;
+  /** Theater name */
   name: string;
+  /** Street address */
   address: string;
 }

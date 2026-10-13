@@ -7,5 +7,6 @@
  */
 
 export interface TelegramVerifyRequest {
+  /** Value of the `tgAuthResult` parameter that Telegram appends to the `return_to` URL after login: base64-encoded JSON with the Telegram user data and its `hash` signature. Pass it as is, without decoding. */
   tgAuthResult: string;
 }

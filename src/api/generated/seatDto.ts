@@ -7,6 +7,8 @@
  */
 
 export interface SeatDto {
+  /** Seat id from GET /seats/hall/{hallId}. Must belong to the screening's hall and must not be booked yet. */
   seatId: string;
+  /** Ignored. Kept for compatibility: the price is always taken from the seat on the server, whatever is sent here. */
   price: number;
 }

@@ -7,7 +7,10 @@
  */
 
 export interface GetHallResponse {
+  /** Hall id */
   id: string;
+  /** Hall name */
   name: string;
+  /** Id of the theater the hall belongs to */
   theaterId: string;
 }

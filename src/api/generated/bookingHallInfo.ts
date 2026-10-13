@@ -7,6 +7,8 @@
  */
 
 export interface BookingHallInfo {
+  /** Hall id */
   id: string;
+  /** Hall name */
   name: string;
 }

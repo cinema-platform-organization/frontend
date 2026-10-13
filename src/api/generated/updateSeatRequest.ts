@@ -8,6 +8,8 @@
 import type { UpdateSeatRequestType } from './updateSeatRequestType';
 
 export interface UpdateSeatRequest {
+  /** New ticket price in UAH (whole number). Applies to new bookings only; tickets already bought keep their price. Leave out to keep the current one. */
   price?: number;
+  /** New seat type. Leave out to keep the current one. */
   type?: UpdateSeatRequestType;
 }
